@@ -25,7 +25,9 @@
 ・自分の好きな焼き鳥の魅力をコメントで共有したい時
 ​
 ## 設計書
-
+ER図設計書 https://drive.google.com/file/d/1WLUio1vHKC7ms0kGXmlYBoPntA2x-VQt/view?usp=sharing<br>
+テーブル定義書 https://docs.google.com/spreadsheets/d/1O-2yCapipAMWIBNrJKdQGxevHUwMG2xk/edit?usp=sharing&ouid=109169183172814190653&rtpof=true&sd=true<br>
+アプリケーション詳細設計書 https://docs.google.com/spreadsheets/d/1eooVbnEPJ8MlDZbCo9r-7Pqx3xCCdm91/edit?usp=sharing&ouid=109169183172814190653&rtpof=true&sd=true
 ​
 ## 開発環境
 - OS：Linux(CentOS)
