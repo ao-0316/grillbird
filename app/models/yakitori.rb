@@ -1,0 +1,2 @@
+class Yakitori < ApplicationRecord
+end

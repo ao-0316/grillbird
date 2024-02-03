@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row my-3 offset-1 text-center">
+    <h2>焼き鳥新規登録</h2>
+  </div>
+
+　<div class="row">
+　  <div class="col">
+      <%= form_with model: @yakitori, url: admin_yakitoris_path, method: :post, local: true do |f| %>
+        <form class="form-horizontal">
+
+          <div class="form-group row">
+            <%= f.label :焼き鳥画像,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.file_field :image, accept: "image/*",class:"form-control-file"  %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :焼き鳥名,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.text_field :name,class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :焼き鳥説明,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.text_area :introduction,class:"form-control" %>
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <%= f.label :ジャンル,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--",class:"form-select" %>
+            </div>
+          </div>
+
+         
+        </form>
+      <% end %>
+    </div>
+  </div>
+
+</div>
