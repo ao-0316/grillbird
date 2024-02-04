@@ -1,2 +1,4 @@
-<h1>Public::Yakitoris#show</h1>
-<p>Find me in app/views/public/yakitoris/show.html.erb</p>
+<%= image_tag @yakitori.image, size: '250x200' %>
+<h2><%= @yakitori.name %></h2>
+<p><%= @yakitori.introduction %></p>
+<p><%= @yakitori.genre_id %></p>
