@@ -1,2 +1,33 @@
-<h1>Admin::Yakitoris#show</h1>
-<p>Find me in app/views/admin/yakitoris/show.html.erb</p>
+<div class="container">
+  <div class="row mt-3 mb-3 offset-1 text-center">
+    <h2>焼き鳥の詳細</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @yakitori.image, size: '250x200' %>
+    </div>
+
+    <div class="col-md-6 item-details mx-auto">
+      <table class="table">
+        <tr>
+          <th>焼き鳥の名前</th>
+          <th><%= @yakitori.name %></th>
+        </tr>
+        <tr>
+          <th>焼き鳥の説明</th>
+          <th><%= @yakitori.introduction %></th>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <th><%= @yakitori.genre_id %></th>
+        </tr>
+      </table>
+
+    <div>
+    <%=link_to "編集する",edit_admin_yakitori_path, class:"btn btn-success mb-5" %>
+    </div>
+
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@
   <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
   <form class="form-horizontal">
     <div class="form-group row my-3">
-      <%= f.label :"ジャンル名",class:"col-sm-2 control-label" %>
+      <%= f.label :name,"ジャンル名",class:"col-sm-2 control-label" %>
       <div class="col-sm-3">
         <%= f.text_field :name,class:"form-control" %>
       </div>
