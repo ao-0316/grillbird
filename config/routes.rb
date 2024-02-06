@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'homes/top'
     get 'homes/about'
-    resources :yakitoris, only: [:index, :show,] do
+    resources :yakitoris, only: [:index, :show] do
       resource :favorite, only: [:create, :destroy]
       resources :yakitori_comments, only: [:create, :destroy]
     end
