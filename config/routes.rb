@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
 
   # 管理者用
@@ -25,8 +25,15 @@ Rails.application.routes.draw do
   namespace :public do
     get 'homes/top'
     get 'homes/about'
-    resources :customers, only: [:show, :edit, :update,:unsubscribe,:withdraw]
-    resources :yakitoris, only: [:index, :show,]
+    resources :yakitoris, only: [:index, :show,] do
+      resource :favorite, only: [:create, :destroy]
+      resources :yakitori_comments, only: [:create, :destroy]
+    end
+    get "customers/mypage", to: "customers#show"
+    get "customers/information/edit", to: "customers#edit"
+    patch "customers/information", to: "customers#update"
+    get 'customers/unsubscribe', to: "customers#unsubscribe"
+    patch 'customers/withdraw', to: "customers#withdraw"
   end
 
 

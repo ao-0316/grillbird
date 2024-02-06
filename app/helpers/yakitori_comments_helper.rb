@@ -1,0 +1,2 @@
+module YakitoriCommentsHelper
+end

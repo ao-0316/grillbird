@@ -2,3 +2,37 @@
 <h2><%= @yakitori.name %></h2>
 <p><%= @yakitori.introduction %></p>
 <p><%= @yakitori.genre_id %></p>
+
+<div>
+  <p>コメント件数：<%= @yakitori.yakitori_comments.count %></p>
+  <% @yakitori.yakitori_comments.each do |yakitori_comment| %>
+    <%= yakitori_comment.customer.full_name %>
+    <%= yakitori_comment.created_at.strftime('%Y/%m/%d') %><%= yakitori_comment.comment %>
+
+    <% if yakitori_comment.customer == current_customer %>
+      <%= link_to "削除", public_yakitori_yakitori_comments_path(yakitori_comment.yakitori, yakitori_comment), method: :delete %>
+    <% end %>
+
+    <% if @yakitori.favorited_by?(current_customer) %>
+    <p>
+      <%= button_to public_yakitori_favorite_path(@yakitori), method: :delete do %>
+        ♥<%= @yakitori.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= button_to public_yakitori_favorite_path(@yakitori), method: :post do %>
+        ♡<%= @yakitori.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+  <% end %>
+</div>
+
+<div>
+ <%= form_with model: [@yakitori, @yakitori_comment], url: public_yakitori_yakitori_comments_path(@yakitori), local: true do |f| %>
+
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

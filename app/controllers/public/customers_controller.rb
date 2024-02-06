@@ -11,8 +11,8 @@ class Public::CustomersController < ApplicationController
 
   def update
     # customer = Customer.find(params[:id])
-    customer = Customer.find(current_customer.id)
-    if customer.update(customer_params)
+    @customer = Customer.find(current_customer.id)
+    if @customer.update(customer_params)
       redirect_to public_customers_mypage_path, notice: "変更内容を保存しました。"
     else
       render :edit
@@ -26,7 +26,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     @customer.update(is_active: false)
     reset_session
-    redirect_to public_top_path, notice: "退会処理を実行いたしました。"
+    redirect_to public_homes_top_path, notice: "退会処理を実行いたしました。"
   end
 
   private

@@ -1,25 +1,26 @@
 <div class="container">
   <div class="row">
-    
+
 
     <div class="col-md-10 my-3">
       <h1>商品一覧(全<%= @yakitoris.count %>件)</h1>
       <div class="main-content mt-4">
         <div class="row row-cols-5 p-3">
-          
-          
+
+
           <% @yakitoris.each do |yakitori| %>
-            
+
               <%= link_to public_yakitori_path(yakitori) do %>
                 <%= image_tag yakitori.image, size: '250x200' %>
               <% end %>
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
-              
+
+              <p><%= link_to "#{yakitori.yakitori_comments.count} コメント" %></p>
             </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-  
+
 </div>

@@ -8,6 +8,7 @@ class Public::YakitorisController < ApplicationController
 
   def show
     @yakitori = Yakitori.find(params[:id])
+    @yakitori_comment = YakitoriComment.new
     @genres = Genre.all
   end
   
