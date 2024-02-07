@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :yakitoris, only: [:index, :new, :create, :show, :edit, :update]
+    resources :yakitori_comments, only: [:index, :destroy]
   end
 
 
@@ -27,9 +29,9 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
     resources :yakitoris, only: [:index, :show] do
-      resource :favorite, only: [:create, :destroy]
-      resources :yakitori_comments, only: [:create, :destroy]
-    end
+    resource :favorite, only: [:create, :destroy]
+    resources :yakitori_comments, only: [:create, :destroy]
+  end
     get "customers/mypage", to: "customers#show"
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
