@@ -1,0 +1,11 @@
+<h3>検索結果</h3>
+      <% @yakitoris.each do |yakitori| %>
+        
+        <%= link_to public_yakitori_path(yakitori.id) do %>
+          <%= image_tag yakitori.image, size: "200x150" %>
+        <% end %>
+        <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>

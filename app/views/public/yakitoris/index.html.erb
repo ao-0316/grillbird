@@ -15,7 +15,22 @@
               <% end %>
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
 
-              <p><%= link_to "#{yakitori.yakitori_comments.count} コメント" %></p>
+              <p><%= "#{yakitori.yakitori_comments.count} コメント" %></p>
+
+              <% if yakitori.favorited_by?(current_customer) %>
+              <p>
+                <%= button_to public_yakitori_favorite_path(yakitori), method: :delete do %>
+                  ♥<%= yakitori.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= button_to public_yakitori_favorite_path(yakitori), method: :post do %>
+                  ♡<%= yakitori.favorites.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
+
             </div>
           <% end %>
         </div>

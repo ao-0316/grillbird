@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    get '/genre/search' => 'searches#genre_search'
     get 'homes/top'
     get 'homes/about'
     resources :yakitoris, only: [:index, :show] do
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
-    patch 'customers/withdraw', to: "customers#withdraw"
+    patch 'customers/withdraw', to: "customers#withdraw" 
   end
 
 

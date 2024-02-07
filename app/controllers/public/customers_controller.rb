@@ -29,8 +29,19 @@ class Public::CustomersController < ApplicationController
     redirect_to public_homes_top_path, notice: "退会処理を実行いたしました。"
   end
 
+  def likes
+    likes = Like.where(customer_id: @customer.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
+  end
+
   private
+
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :address, :email)
   end
+
+  def set_user
+    @customer = Customer.find(params[:id])
+  end
+
 end

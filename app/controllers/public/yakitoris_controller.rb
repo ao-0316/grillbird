@@ -3,6 +3,7 @@ class Public::YakitorisController < ApplicationController
   def index
     @yakitoris = Yakitori.all
     @genres = Genre.all
+  
     #@yakitori_count = Yakitori.all
   end
 

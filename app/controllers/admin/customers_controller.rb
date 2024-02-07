@@ -20,8 +20,8 @@ class Admin::CustomersController < ApplicationController
     else
       flash[:notice] = "会員情報を更新に失敗しました。"
       render 'edit'
+    end
   end
-end
 
 private
   def customer_params
