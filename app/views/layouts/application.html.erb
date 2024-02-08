@@ -15,6 +15,21 @@
 <body class="d-flex flex-column">
     <%= render 'layouts/header' %>
 <main class="flex-grow-1">
+  
+        <div class="d-flex justify-content-center mb-2">
+          
+      <% if customer_signed_in? %>
+    <div class="search_form">
+      <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.select :range, options_for_select([['会員'], ['焼き鳥']]) %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn-sm btn-primary" %>
+    <% end %>
+  </div>
+<% end %>
+          
+        </div>
       <%= yield %>
     </main>
     <footer class="fixed-bottom">

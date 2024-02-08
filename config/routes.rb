@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    get "search" => "searches#search"
     get '/genre/search' => 'searches#genre_search'
     get 'homes/top'
     get 'homes/about'

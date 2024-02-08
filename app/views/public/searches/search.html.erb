@@ -1,0 +1,40 @@
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  
+  
+  <% if @range == "Customer" %>
+  <h2>Customer search for "<%= @word %>"</h2>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>名前</th>
+        <th>説明</th>
+      </tr>
+    <tbody>
+    <h2>Yakitoris search for "<%= @word %>"</h2>
+    <% @yakitoris.each do |yakitori| %>
+      <tr>
+        <td><%= image_tag yakitori.image, size: '250x200' %></td>
+        <td><%= link_to yakitori.name, public_yakitori_path(yakitori) %></td>
+        <td><%= yakitori.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
