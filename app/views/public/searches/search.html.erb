@@ -25,6 +25,7 @@
         <th></th>
         <th>名前</th>
         <th>説明</th>
+        <th>ジャンル</th>
       </tr>
     <tbody>
     <h2>Yakitoris search for "<%= @word %>"</h2>
@@ -33,6 +34,7 @@
         <td><%= image_tag yakitori.image, size: '250x200' %></td>
         <td><%= link_to yakitori.name, public_yakitori_path(yakitori) %></td>
         <td><%= yakitori.introduction %></td>
+        <td><%= yakitori.genre.name %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,9 +1,13 @@
 <header class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: gray;">
 
+
+    <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "ROGO1.jpg", :size => "70x70" %></a>
+
     <div class="collapse navbar-collapse flex-column">
       <ul class="nav ml-auto mx-5">
-        
+
+
 <!--管理者ログイン時ー-->
         <% if admin_signed_in? %>
           <li class="nav-item mr-3">
@@ -24,7 +28,17 @@
 
         <!--ログインした時ー-->
         <% elsif customer_signed_in? %>
-          <li class="nav-item mr-3">
+        <li class="d-flex justify-content-center mb-2">
+          <li class="search_form">
+            <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word %>
+            <%= f.select :range, options_for_select([['会員'], ['焼き鳥']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+            <%= f.submit "検索", class: "btn-sm btn-primary" %>
+          <% end %>
+          </li>
+        </li>
+        <li class="nav-item mr-3">
             <%= link_to public_customers_mypage_path do %>
               <i class="fa-solid text-dark fa-user">マイページ</i>
             <% end %>
@@ -35,7 +49,7 @@
             <% end %>
           </li>
           <li class="nav-item ml-3">
-            <%= button_to destroy_customer_session_path, method: :delete do %>
+            <%= link_to destroy_customer_session_path, method: :delete do %>
               <i class="fa-solid text-dark fa-user">ログアウト</i>
             <% end %>
           </li>
