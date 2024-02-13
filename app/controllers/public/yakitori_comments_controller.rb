@@ -4,9 +4,12 @@ class Public::YakitoriCommentsController < ApplicationController
     yakitori = Yakitori.find(params[:yakitori_id])
     comment = current_customer.yakitori_comments.new(yakitori_comment_params)
     comment.yakitori_id = yakitori.id
-    comment.save
-    redirect_to public_yakitori_path(yakitori)
-  end
+    if  comment.save
+      redirect_to public_yakitori_path(yakitori)
+    else
+      redirect_to public_yakitoris_path(yakitori)
+    end
+  end  
 
   def destroy
     YakitoriComment.find(params[:id]).destroy

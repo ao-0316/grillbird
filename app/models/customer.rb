@@ -7,7 +7,8 @@ class Customer < ApplicationRecord
   has_many :yakitori, dependent: :destroy
   has_many :yakitori_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+  has_one_attached :profile_image
+
   def self.looks(search, word)
     if search == "perfect_match"
       @customer = Customer.where("name LIKE?", "#{word}")
@@ -21,9 +22,18 @@ class Customer < ApplicationRecord
       @customer = Customer.all
     end
   end
-  
+
   def full_name
     "#{last_name} #{first_name}"
+  end
+
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_CUSTOMER_EMAIL) do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestcustomer"
+    end
   end
 
 end

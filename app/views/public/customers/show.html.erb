@@ -13,13 +13,13 @@
 
     <div class="col-10">
       <table class="table table-bordered">
+        <%= image_tag url_for(@customer.profile_image) if @customer.profile_image.attached? %>
         <tr>
           <th class="table-active w-25">氏名</th>
           <td><%= @customer.full_name %></td>
         </tr>
           <th class="table-active w-25">住所</th>
           <td><%= @customer.address %></td>
-        </tr>
         <tr>
           <th class="table-active w-25">メールアドレス</th>
           <td><%= @customer.email %></td>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -37,8 +38,13 @@ Rails.application.routes.draw do
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
-    patch 'customers/withdraw', to: "customers#withdraw" 
+    patch 'customers/withdraw', to: "customers#withdraw"
   end
+
+  devise_scope :customer do
+    post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
 
 
 

@@ -4,6 +4,13 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :customer_state, only: [:create]
   
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to public_homes_top_path, notice: "guestuserでログインしました。"
+  end
+end
+  
   def after_sign_in_path_for(resource)
     public_homes_top_path
   end
@@ -45,4 +52,4 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-end
+

@@ -3,7 +3,7 @@
 
 
     <div class="col-md-10 my-3">
-      <h1>商品一覧(全<%= @yakitoris.count %>件)</h1>
+      <h1>焼き鳥一覧(全<%= @yakitoris.count %>件)</h1>
       <div class="main-content mt-4">
         <div class="row row-cols-5 p-3">
 
@@ -14,6 +14,8 @@
                 <%= image_tag yakitori.image, size: '250x200' %>
               <% end %>
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
+              
+              <p><%= yakitori.genre.name %></p>
 
               <p><%= "#{yakitori.yakitori_comments.count} コメント" %></p>
 

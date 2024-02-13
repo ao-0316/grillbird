@@ -12,6 +12,11 @@ class Public::CustomersController < ApplicationController
   def update
     # customer = Customer.find(params[:id])
     @customer = Customer.find(current_customer.id)
+    
+  if params[:customer][:profile_image].present?
+    @customer.profile_image.attach(params[:customer][:profile_image])
+  end
+    
     if @customer.update(customer_params)
       redirect_to public_customers_mypage_path, notice: "変更内容を保存しました。"
     else
