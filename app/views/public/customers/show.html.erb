@@ -18,9 +18,12 @@
           <th class="table-active w-25">氏名</th>
           <td><%= @customer.full_name %></td>
         </tr>
+
+        <% if @customer.id == current_customer.id %>
           <th class="table-active w-25">住所</th>
           <td><%= @customer.address %></td>
         <tr>
+        <% end %>
           <th class="table-active w-25">メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
