@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
     resources :yakitori_comments, only: [:create, :destroy]
   end
-    get "customers/mypage", to: "customers#show"
+    get "customers/:id/mypage", to: "customers#show"
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   devise_scope :customer do
     post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
+
 
 
 

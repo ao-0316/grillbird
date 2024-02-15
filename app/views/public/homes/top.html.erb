@@ -3,25 +3,6 @@
 
 <div class="genre_search">
   <table class="table">
-
-    
-<%= link_to "ゲストログイン（閲覧用）", customers_guest_sign_in_path, method: :post %>
-      
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
     <tr>
       <th>ジャンル検索</th>
     </tr>
@@ -33,6 +14,6 @@
         </tr>
       <% end %>
     <% end %>
-
   </table>
 </div>
+<%= link_to "ゲストログイン（閲覧用）", customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
