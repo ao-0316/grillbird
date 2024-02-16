@@ -7,13 +7,15 @@
     <div class="col-2">
       <h3>登録情報</h3>
     </div>
+    <% if @customer.id == current_customer.id %>
     <div class="col">
       <%= link_to "編集する", public_customers_information_edit_path, class:"btn btn-success" %>
     </div>
+    <% end %>
 
     <div class="col-10">
       <table class="table table-bordered">
-        <%= image_tag url_for(@customer.profile_image) if @customer.profile_image.attached? %>
+        <%= image_tag url_for(@customer.profile_image) ,:size => "250x250" %>
         <tr>
           <th class="table-active w-25">氏名</th>
           <td><%= @customer.full_name %></td>
@@ -23,10 +25,10 @@
           <th class="table-active w-25">住所</th>
           <td><%= @customer.address %></td>
         <tr>
-        <% end %>
           <th class="table-active w-25">メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
+        <% end %>
       </table>
     </div>
   </div>
