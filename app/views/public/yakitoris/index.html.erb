@@ -11,15 +11,16 @@
                 <%= image_tag yakitori.image, size: '250x200' %>
               <% end %>
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
-              
+
               <p><%= yakitori.genre.name %></p>
 
               <p><%= "#{yakitori.yakitori_comments.count} コメント" %></p>
-            <td id="favorite_buttons_<%= yakitori.id %>">
+            <div id="favorite_buttons_<%= yakitori.id %>">
               <%= render "public/favorites/favorites", yakitori: yakitori %>
-            </td>  
             </div>
+
           <% end %>
+          </div>
         </div>
       </div>
     </div>

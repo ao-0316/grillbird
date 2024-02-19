@@ -14,7 +14,7 @@
 
 <body class="d-flex flex-column">
     <%= render 'layouts/header' %>
-</body>
+
 
   <main class="flex-grow-1">
    <%= yield %>
@@ -26,10 +26,11 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              
+
               <h1 class="text-center"><%=link_to "Yakitori",new_admin_session_path%></h1>
             </div>
           </div>
         </div>
       </div>
+    </body>
   </html>

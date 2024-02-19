@@ -1,13 +1,13 @@
 <% if yakitori.favorited_by?(current_customer) %>
-<p>
-  <%= button_to public_yakitori_favorite_path(yakitori), method: :delete,remoto: true do %>
+
+  <%= button_to public_yakitori_favorite_path(yakitori), method: :delete,remote: true do %>
     ♥<%= yakitori.favorites.count %> いいね
   <% end %>
-</p>
+
 <% else %>
-<p>
-  <%= button_to public_yakitori_favorite_path(yakitori), method: :post,remoto: true do %>
+
+  <%= button_to public_yakitori_favorite_path(yakitori), method: :post, remote: true do %>
     ♡<%= yakitori.favorites.count %> いいね
   <% end %>
-</p>
+
 <% end %>
