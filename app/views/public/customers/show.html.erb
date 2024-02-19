@@ -15,7 +15,11 @@
 
     <div class="col-10">
       <table class="table table-bordered">
-        <%= image_tag url_for(@customer.profile_image) ,:size => "250x250" %>
+        <% if @customer.profile_image.attached? %>
+          <%= image_tag url_for(@customer.profile_image) ,:size => "250x250" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "250x250" %>
+        <% end %>
         <tr>
           <th class="table-active w-25">氏名</th>
           <td><%= @customer.full_name %></td>

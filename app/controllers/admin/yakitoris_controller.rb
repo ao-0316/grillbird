@@ -1,4 +1,5 @@
 class Admin::YakitorisController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @yakitoris = Yakitori.all

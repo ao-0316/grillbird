@@ -1,4 +1,5 @@
 class Admin::YakitoriCommentsController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @yakitori_comments = YakitoriComment.all
