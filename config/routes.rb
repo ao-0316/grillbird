@@ -31,6 +31,7 @@ root to: "public/homes#top"
     get '/genre/search' => 'searches#genre_search'
     get 'homes/top'
     get 'homes/about'
+    
     resources :yakitoris, only: [:index, :show] do
     resource :favorite, only: [:create, :destroy]
     resources :yakitori_comments, only: [:create, :destroy]
@@ -45,6 +46,9 @@ root to: "public/homes#top"
   devise_scope :customer do
     post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
+  
+  resources :rooms, only: [:create,:show]
+  resources :messages, only: [:create]
 
 
 

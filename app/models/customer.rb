@@ -7,8 +7,10 @@ class Customer < ApplicationRecord
   has_many :yakitori, dependent: :destroy
   has_many :yakitori_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   has_one_attached :profile_image
-
+  
   def self.looks(search, word)
     if search == "perfect_match"
       @customer = Customer.where("name LIKE?", "#{word}")

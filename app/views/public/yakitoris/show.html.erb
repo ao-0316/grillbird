@@ -1,3 +1,12 @@
+<% if @yakitori_comment.errors.any? %>
+  <%= @yakitori_comment.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @yakitori_comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= image_tag @yakitori.image, size: '300x300' %>
 <h2><%= @yakitori.name %></h2>
 <p><%= @yakitori.introduction %></p>
@@ -41,4 +50,3 @@
     <% end %>
   <% end %>
 </div>
-

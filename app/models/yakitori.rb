@@ -5,6 +5,8 @@ class Yakitori < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_one_attached :image
   
+  validates :comment, presence: true
+  
   def self.looks(search, word)
     if search == "perfect_match"
       @yakitori = Yakitori.where("name LIKE?","#{word}")
