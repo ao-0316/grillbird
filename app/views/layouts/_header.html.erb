@@ -3,7 +3,7 @@
 
 <a class="navbar-brand mx-5 img-thumbnail" href="/public/homes/top"><%= image_tag "ROGO3.png", :size => "70x70" %></a>
 
-<h1 class="text-center">Grill Bird</h1>  
+<h1 class="text-center">Grill Bird</h1>
 
 
     <div class="collapse navbar-collapse flex-column">
@@ -13,8 +13,13 @@
 <!--管理者ログイン時ー-->
         <% if admin_signed_in? %>
           <li class="nav-item mr-3">
+            <%= link_to admin_customers_path do %>
+              <i class="fa-solid text-dark fa-user">会員一覧</i>
+            <% end %>
+          </li>
+          <li class="nav-item mr-3">
             <%= link_to admin_yakitoris_path do %>
-              <i class="fa-solid text-dark fa-cake-candles">焼き鳥一覧</i>
+              <i class="fa-solid text-dark fa-crow">焼き鳥一覧</i>
             <% end %>
           </li>
           <li class="nav-item mx-3">
@@ -30,24 +35,24 @@
 
         <!--ログインした時ー-->
         <% elsif customer_signed_in? %>
-        <li class="d-flex justify-content-center mb-2">
-          <li class="search_form">
-            <%= form_with url: public_search_path, local: true, method: :get do |f| %>
-            <%= f.text_field :word %>
-            <%= f.select :range, options_for_select([['会員'], ['焼き鳥']]) %>
-            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-            <%= f.submit "検索", class: "btn-sm btn-primary" %>
-          <% end %>
+          <li class="d-flex justify-content-center mb-2">
+            <li class="search_form">
+              <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+              <%= f.text_field :word %>
+              <%= f.select :range, options_for_select( [['焼き鳥']]) %>
+              <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+              <%= f.submit "検索", class: "btn-sm btn-primary" %>
+            <% end %>
+            </li>
           </li>
-        </li>
-        <li class="nav-item mr-3">
+          <li class="nav-item mr-3">
             <%= link_to public_path(current_customer) do %>
               <i class="fa-solid text-dark fa-user">マイページ</i>
             <% end %>
           </li>
           <li class="nav-item mx-3">
             <%= link_to  public_yakitoris_path do %>
-              <i class="fa-solid text-dark fa-cake-candles">焼き鳥一覧</i>
+              <i class="fa-solid text-dark fa-crow">焼き鳥一覧</i>
             <% end %>
           </li>
           <li class="nav-item ml-3">
@@ -65,7 +70,7 @@
           </li>
         <li class="nav-item mx-3">
           <%= link_to public_yakitoris_path do %>
-            <i class="fa-solid text-dark fa-cake-candles">焼き鳥一覧</i>
+            <i class="fa-solid text-dark fa-crow">焼き鳥一覧</i>
           <% end %>
         </li>
         <li class="nav-item mx-3">
@@ -78,6 +83,13 @@
             <i class="fa-solid text-dark fa-user">ログイン</i>
           <% end %>
         </li>
+        <li class="nav-item ml-3">
+          <%= link_to  customers_guest_sign_in_path,method: :post do%>
+            <i class="fa-solid text-dark fa-user">ゲストログイン</i>
+          <% end %>
+        </li>
+        
+        
         <% end %>
       </ul>
 

@@ -10,20 +10,6 @@ class Customer < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_one_attached :profile_image
-  
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @customer = Customer.where("name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @customer = Customer.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @customer = Customer.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @customer = Customer.where("name LIKE?","%#{word}%")
-    else
-      @customer = Customer.all
-    end
-  end
 
   def full_name
     "#{last_name} #{first_name}"

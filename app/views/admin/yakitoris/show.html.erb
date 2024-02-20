@@ -2,10 +2,10 @@
   <div class="row mt-3 mb-3 offset-1 text-center">
     <h2>焼き鳥の詳細</h2>
   </div>
-  
+
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @yakitori.image, size: '250x200' %>
+      <%= image_tag @yakitori.image, size: '250x230' %>
     </div>
 
     <div class="col-md-6 item-details mx-auto">
@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <th><%= @yakitori.genre_id %></th>
+          <th><%= @yakitori.genre.name %></th>
         </tr>
       </table>
 

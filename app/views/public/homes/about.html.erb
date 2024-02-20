@@ -1,2 +1,9 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<h1 class="display-1 text-center">Grill Birdへようこそ！</h1>
+  <h2>こちらのサイトでは焼き鳥好きによる、焼き鳥をきっかけに交流を深める事を目的としたコミュニティサイトです。<br>
+  好きな焼き鳥を語り合うためにそれぞれの焼き鳥にコメントが出来るようになっていたり、<br>
+  その中で会員同士でのDMでのやり取りや、焼き鳥へのいいね機能も行えるようになっています。<br>
+  是非、会員登録を行って利用してみて下さい！
+  </h2>
+    <%= link_to new_customer_registration_path, data: {"turbolinks" => false} do %>
+      <i class="fa-solid text-dark fa-user">新規登録</i>
+    <% end %>

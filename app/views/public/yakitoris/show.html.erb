@@ -19,22 +19,9 @@
     <%= f.submit "送信する" %>
   <% end %>
 </div>
-
-
-    <% if @yakitori.favorited_by?(current_customer) %>
-    <p>
-      <%= button_to public_yakitori_favorite_path(@yakitori), method: :delete do %>
-        ♥<%= @yakitori.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= button_to public_yakitori_favorite_path(@yakitori), method: :post do %>
-        ♡<%= @yakitori.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-
+  <div id="favorite_buttons_<%= @yakitori.id %>">
+     <%= render "public/favorites/favorites", yakitori: @yakitori %>
+  </div>
 <div>
   <p>コメント件数：<%= @yakitori.yakitori_comments.count %></p>
 

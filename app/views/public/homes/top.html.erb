@@ -1,19 +1,31 @@
-<div class="genre_search">
-  <table class="table">
-    <tr>
-      <th>ジャンル検索</th>
-    </tr>
-
-    <%= form_with url: public_genre_search_path, method: :get do |f| %>
-      <% @genres.each do |genre| %>
+<div class="container-fulied">
+  <div class="row">
+    <div class="col-md-5">
+      <div><%= image_tag "ROGO1.jpg", :size => "800x500" %></div>
+      <table class="table">
         <tr>
+          <h2>ジャンル検索</h2>
+        </tr><%= form_with url: public_genre_search_path, method: :get do |f| %>
+        <tr><% @genres.each do |genre| %>
           <td><%= link_to genre.name, public_genre_search_path(genre_id: genre.id), method: :get %></td>
         </tr>
-      <% end %>
-    <% end %>
-  </table>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-7">
+
+    <h1>焼き鳥一覧(全<%= @yakitoris.count %>件)</h1>
+    <% @yakitoris.first(4).each do |yakitori| %>
+    <%= link_to public_yakitori_path(yakitori) do %>
+                <%= image_tag yakitori.image, size: '250x200' %>
+                <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
+              <p><%= yakitori.genre.name %></p>
+                <% end %>
+                <% end %>
+                <p calss="text-align:center"><%= image_tag "yakitori1.png", :size => "800x500" %></p>
+  </div>
 </div>
 
-<div class="text-center"><%= image_tag "ROGO1.jpg", :size => "500x300" %></div>
 
-<%= link_to "ゲストログイン（閲覧用）", customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+

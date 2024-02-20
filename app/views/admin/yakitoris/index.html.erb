@@ -11,6 +11,7 @@
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
+          <th></th>
           <th>商品ID</th>
           <th>焼き鳥の名前</th>
           <th>ジャンル</th>
@@ -19,9 +20,10 @@
       <tbody>
         <% @yakitoris.each do |yakitori| %>
           <tr>
+            <td><%= image_tag yakitori.image, size: '150x130' %></td>
             <td><%= yakitori.id %></td>
             <td><%= link_to yakitori.name, admin_yakitori_path(yakitori.id) %></td>
-            <td><%= yakitori.genre_id %></td>
+            <td><%= yakitori.genre.name %></td>
           </tr>
           <% end %>
       </tbody>
