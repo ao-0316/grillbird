@@ -10,13 +10,12 @@ class Admin::YakitorisController < ApplicationController
   end
 
   def create
-    @yakitori = Yakitori.new(yakitori_params)
+      @yakitori = Yakitori.new(yakitori_params)
     if @yakitori.save
-      flash[:notice] = "商品の新規登録が完了しました"
+      flash[:notice] = "焼き鳥の新規登録が完了しました"
       redirect_to admin_yakitori_path(@yakitori.id)
     else
-      flash[:notice] = "商品の新規登録に失敗しました"
-      render :new
+      render 'new'
     end
   end
 
@@ -31,10 +30,10 @@ class Admin::YakitorisController < ApplicationController
   def update
     @yakitori = Yakitori.find(params[:id])
     if @yakitori.update(yakitori_params)
-      flash[:notice] = "商品詳細の変更が完了しました。"
+      flash[:notice] = "焼き鳥の詳細変更が完了しました。"
       redirect_to admin_yakitori_path
     else
-      flash[:notice] = "商品詳細の変更に失敗しました。"
+      flash[:notice] = "焼き鳥の詳細変更に失敗しました。"
       render :edit
     end
   end
