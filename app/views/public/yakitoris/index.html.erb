@@ -4,12 +4,13 @@
       <h1>焼き鳥一覧(全<%= @yakitoris.count %>件)</h1>
       <div class="main-content mt-4">
         <div class="row-cols-4 p-3">
+          <div class="col d-flex">
 
           <% @yakitoris.each do |yakitori| %>
-
-              <%= link_to public_yakitori_path(yakitori) do %>
+             
+              <p><%= link_to public_yakitori_path(yakitori) do %>
                 <%= image_tag yakitori.image, size: '250x200' %>
-              <% end %>
+              <% end %></p>
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
 
               <p><%= yakitori.genre.name %></p>
