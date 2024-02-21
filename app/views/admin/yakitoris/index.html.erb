@@ -20,7 +20,11 @@
       <tbody>
         <% @yakitoris.each do |yakitori| %>
           <tr>
-            <td><%= image_tag yakitori.image, size: '150x130' %></td>
+           <% if yakitori.image.attached? %>
+                  <td><%= image_tag yakitori.image, size: '250x200' %></td>
+                <% else %>
+                  <td><%= image_tag 'no_image', size: "250x200" %></td>
+                <% end %>
             <td><%= yakitori.id %></td>
             <td><%= link_to yakitori.name, admin_yakitori_path(yakitori.id) %></td>
             <td><%= yakitori.genre.name %></td>

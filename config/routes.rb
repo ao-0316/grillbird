@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 root to: "public/homes#top"
 
   # 顧客用
@@ -31,11 +31,12 @@ root to: "public/homes#top"
     get '/genre/search' => 'searches#genre_search'
     get 'homes/top'
     get 'homes/about'
-    
-    resources :yakitoris, only: [:index, :show] do
+
+    resources :yakitoris, only: [:index, :show,] do
     resource :favorite, only: [:create, :destroy]
     resources :yakitori_comments, only: [:create, :destroy]
   end
+    get 'customers/:id/favorites', to: 'customers#favorites', as: 'customers_favorites'
     get "customers/:id/mypage", to: "customers#show"
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
@@ -46,7 +47,7 @@ root to: "public/homes#top"
   devise_scope :customer do
     post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
-  
+
   resources :rooms, only: [:create,:show]
   resources :messages, only: [:create]
 

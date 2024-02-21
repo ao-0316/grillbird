@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 my-3">
+    <div class="col-md-10">
       <h1>焼き鳥一覧(全<%= @yakitoris.count %>件)</h1>
       <div class="main-content mt-4">
-        <div class="row-cols-4 p-3">
-          <div class="col d-flex">
+        <div class="row">
+          
 
           <% @yakitoris.each do |yakitori| %>
+            <div class="col-md-3">
              
-              <p><%= link_to public_yakitori_path(yakitori) do %>
+              <% if yakitori.image.attached? %>
                 <%= image_tag yakitori.image, size: '250x200' %>
-              <% end %></p>
+              <% else %>
+                <%= image_tag 'no_image', size: "250x200" %>
+              <% end %>
+                
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
 
               <p><%= yakitori.genre.name %></p>
@@ -19,9 +23,9 @@
             <div id="favorite_buttons_<%= yakitori.id %>">
               <%= render "public/favorites/favorites", yakitori: yakitori %>
             </div>
-
+            </div>
           <% end %>
-          </div>
+          
         </div>
       </div>
     </div>

@@ -9,7 +9,11 @@
           </ul>
         <% end %>
         
-        <%= image_tag @yakitori.image, size: '300x300' %>
+        <% if @yakitori.image.attached? %>
+                  <%= image_tag @yakitori.image, size: '250x200' %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "250x200" %>
+                <% end %>
         <h2><%= @yakitori.name %></h2>
         <p><%= @yakitori.introduction %></p>
         <p><%= @yakitori.genre.name %></p>

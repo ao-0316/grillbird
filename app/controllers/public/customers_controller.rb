@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-
+  
   def show
     @customer = Customer.find(params[:id])
     @currentCustomerEntry=Entry.where(customer_id: current_customer.id)
@@ -21,7 +21,7 @@ class Public::CustomersController < ApplicationController
           @entry = Entry.new
         end
       end
-    @yakitoris = @customer.yakitori
+    #@yakitoris = @customer.yakitori
   end
     
     
@@ -61,6 +61,11 @@ class Public::CustomersController < ApplicationController
   def likes
     likes = Like.where(customer_id: @customer.id).pluck(:post_id)
     @like_posts = Post.find(likes)
+  end
+  
+  def  favorites
+    @customer = Customer.find(params[:id])
+    @yakitori = @customer.favorite_yakitoris
   end
 
   private

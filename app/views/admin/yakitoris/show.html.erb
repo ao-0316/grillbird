@@ -5,7 +5,11 @@
 
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @yakitori.image, size: '250x230' %>
+      <% if @yakitori.image.attached? %>
+        <%= image_tag @yakitori.image, size: '250x200' %>
+      <% else %>
+        <%= image_tag 'no_image', size: "250x200" %>
+      <% end %>
     </div>
 
     <div class="col-md-6 item-details mx-auto">

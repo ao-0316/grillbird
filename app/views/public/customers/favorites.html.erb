@@ -1,0 +1,10 @@
+<% @yakitori.each do |yakitori| %>
+    <% if yakitori.image.attached? %>
+      <td><%= image_tag yakitori.image, size: '250x200' %></td>
+    <% else %>
+      <td><%= image_tag 'no_image', size: "250x200" %></td>
+    <% end %>
+    <td><%= yakitori.id %></td>
+    <td><%= link_to yakitori.name, public_yakitori_path(yakitori) %></td>
+    <td><%= yakitori.genre.name %></td>
+<% end %>

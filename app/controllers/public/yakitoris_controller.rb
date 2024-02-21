@@ -12,7 +12,7 @@ class Public::YakitorisController < ApplicationController
     @yakitori = Yakitori.find(params[:id])
     @yakitori_comment = YakitoriComment.new
     @genres = Genre.all
-    @customer = @yakitori.customer
+    #@customer = @yakitori.customer
   end
 
   def list_params

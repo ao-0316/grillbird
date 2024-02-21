@@ -4,11 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  
+
   has_many :yakitori_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :favorite_yakitoris, through: :favorites, source: :yakitori
   has_one_attached :profile_image
 
   def full_name
