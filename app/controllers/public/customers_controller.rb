@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_guest_customer, only: [:edit]
   
   def show
     @customer = Customer.find(params[:id])
@@ -57,11 +58,6 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to public_homes_top_path, notice: "退会処理を実行いたしました。"
   end
-
-  def likes
-    likes = Like.where(customer_id: @customer.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
-  end
   
   def  favorites
     @customer = Customer.find(params[:id])
@@ -77,5 +73,12 @@ class Public::CustomersController < ApplicationController
   def set_user
     @customer = Customer.find(params[:id])
   end
+  
+  def ensure_guest_customer
+    #@customer = Customer.find(params[:id])
+    #if @customer.email == "guest@example.com"
+      #redirect_to public_yakitori_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    #end
+  end  
 
 end

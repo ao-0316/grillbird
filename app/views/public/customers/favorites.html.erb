@@ -1,3 +1,5 @@
+<h1>いいね一覧(全<%= @yakitori.count %>件)</h1>
+
 <% @yakitori.each do |yakitori| %>
     <% if yakitori.image.attached? %>
       <td><%= image_tag yakitori.image, size: '250x200' %></td>

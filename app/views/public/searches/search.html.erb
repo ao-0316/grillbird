@@ -10,7 +10,11 @@
     <h2>Yakitoris search for "<%= @word %>"</h2>
     <% @yakitoris.each do |yakitori| %>
       <tr>
-        <td><%= image_tag yakitori.image, size: '250x200' %></td>
+        <% if yakitori.image.attached? %>
+          <td><%= image_tag yakitori.image, size: '250x200' %></td>
+      　<% else %>
+          <td><%= image_tag 'no_image', size: "250x200" %></td>
+        <% end %>
         <td><%= link_to yakitori.name, public_yakitori_path(yakitori) %></td>
         <td><%= yakitori.introduction %></td>
         <td><%= yakitori.genre.name %></td>

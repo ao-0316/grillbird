@@ -23,10 +23,12 @@
     <div class="col-2">
       <h3>登録情報</h3>
     </div>
+    <%# if @customer.email != "guest@example.com" %>
     <% if @customer.id == current_customer.id %>
     <div class="col">
       <%= link_to "編集する", public_customers_information_edit_path, class:"btn btn-success" %>
     </div>
+    <%# end %>
     <% end %>
 
     <div class="col-10">
@@ -51,7 +53,7 @@
         <% end %>
       </table>
       <%= link_to "いいね一覧", public_customers_favorites_path, class:"btn btn-success" %>
-      
+
     </div>
   </div>
 </div>

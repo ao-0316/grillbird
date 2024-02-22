@@ -1,9 +1,18 @@
+<div class="container-fluid">
 <h1 class="display-1 text-center">Grill Birdへようこそ！</h1>
-  <h2>こちらのサイトでは焼き鳥好きによる、焼き鳥をきっかけに交流を深める事を目的としたコミュニティサイトです。<br>
+<div class="row">
+  <div class="col">
+<div><%= image_tag "ROGO1.jpg", :size => "1000x700" %></div>
+  <h2 calss="display-1 text-center">こちらのサイトでは焼き鳥好きによる、焼き鳥をきっかけに交流を深める事を目的としたコミュニティサイトです。<br>
   好きな焼き鳥を語り合うためにそれぞれの焼き鳥にコメントが出来るようになっていたり、<br>
   その中で会員同士でのDMでのやり取りや、焼き鳥へのいいね機能も行えるようになっています。<br>
-  是非、会員登録を行って利用してみて下さい！
-  </h2>
+  是非、会員登録を行って利用してみて下さい！ </h2>
+
     <%= link_to new_customer_registration_path, data: {"turbolinks" => false} do %>
-      <i class="fa-solid text-dark fa-user">新規登録</i>
+      <h2 class="fa-solid text-dark fa-user">新規登録</h2>
     <% end %>
+
+    </div>
+    </div>
+    </div>
+    </div>

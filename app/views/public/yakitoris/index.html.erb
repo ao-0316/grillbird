@@ -2,33 +2,23 @@
   <div class="row">
     <div class="col-md-10">
       <h1>焼き鳥一覧(全<%= @yakitoris.count %>件)</h1>
-      <div class="main-content mt-4">
-        <div class="row">
-          
-
+  　     <div class="row">
           <% @yakitoris.each do |yakitori| %>
             <div class="col-md-3">
-             
-              <% if yakitori.image.attached? %>
+             <% if yakitori.image.attached? %>
                 <%= image_tag yakitori.image, size: '250x200' %>
               <% else %>
                 <%= image_tag 'no_image', size: "250x200" %>
               <% end %>
-                
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
-
               <p><%= yakitori.genre.name %></p>
-
               <p><%= "#{yakitori.yakitori_comments.count} コメント" %></p>
-            <div id="favorite_buttons_<%= yakitori.id %>">
+              <div id="favorite_buttons_<%= yakitori.id %>">
               <%= render "public/favorites/favorites", yakitori: yakitori %>
-            </div>
+              </div>
             </div>
           <% end %>
-          
-        </div>
+          </div>
       </div>
     </div>
   </div>
-
-</div>

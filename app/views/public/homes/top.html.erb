@@ -1,11 +1,12 @@
 <div class="container-fulied">
   <div class="row">
     <div class="col-md-5">
-      <div><%= image_tag "ROGO1.jpg", :size => "800x500" %></div>
+      <div><%= image_tag "ROGO1.jpg", :size => "790x500" %></div>
       <table class="table">
         <tr>
           <h2>ジャンル検索</h2>
-        </tr><%= form_with url: public_genre_search_path, method: :get do |f| %>
+        </tr>
+          <%= form_with url: public_genre_search_path, method: :get do |f| %>
         <tr><% @genres.each do |genre| %>
           <td><%= link_to genre.name, public_genre_search_path(genre_id: genre.id), method: :get %></td>
         </tr>
@@ -13,24 +14,24 @@
         <% end %>
       </table>
     </div>
-    <div class="col-md-7">
-
-    <h1>焼き鳥一覧(全<%= @yakitoris.count %>件)</h1>
-    
-    <% @yakitoris. each do |yakitori| %>
-                <% if yakitori.image.attached? %>
-                  <%= image_tag yakitori.image, size: '250x200' %>
-                <% else %>
-                  <%= image_tag 'no_image', size: "250x200" %>
-                <% end %>
-                
-                <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
-              <p><%= yakitori.genre.name %></p>
-                <% end %>
-                <p calss="text-align:center"><%= image_tag "yakitori1.png", :size => "800x500" %></p>
-                
+    <div class="col-md-6">
+      <h1>焼き鳥、サイドメニュー一覧(最新6件)</h1>
+      <div class="container">
+        <div class="row">
+          
+        
+        <% @yakitoris.first(6).each do |yakitori| %>
+        <% if yakitori.image.attached? %>
+          <p><%= image_tag yakitori.image, size: '200x180' %></p>
+        <% else %>
+          <p><%= image_tag 'no_image', size: "200x180" %></p>
+        <% end %>
+          <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
+          <p><%= yakitori.genre.name %></p>
+        <% end %>
+          <p calss="text-align:center"><%= image_tag "yakitori1.png", :size => "800x500" %></p>
+      </div>
+    </div>
   </div>
 </div>
-
-
 

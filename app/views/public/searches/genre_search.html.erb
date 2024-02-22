@@ -1,11 +1,19 @@
-<h3>検索結果</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+    <h3>検索結果</h3>
+    <div class="row">
       <% @yakitoris.each do |yakitori| %>
-        
-        <%= link_to public_yakitori_path(yakitori.id) do %>
-          <%= image_tag yakitori.image, size: "200x150" %>
-        <% end %>
+      <div class="col-md-3">
+      <% if yakitori.image.attached? %>
+        <p><%= image_tag yakitori.image, size: '250x200' %></p>
+      <% else %>
+        <p><%= image_tag 'no_image', size: "250x200" %></p>
+      <% end %>
         <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
       </div>
       <% end %>
+      </div>
     </div>
   </div>
+</div>
