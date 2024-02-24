@@ -31,10 +31,13 @@ root to: "public/homes#top"
     get '/genre/search' => 'searches#genre_search'
     get 'homes/top'
     get 'homes/about'
+    resources :rooms, only: [:create,:show]
+    resources :messages, only: [:create]
 
     resources :yakitoris, only: [:index, :show,] do
     resource :favorite, only: [:create, :destroy]
     resources :yakitori_comments, only: [:create, :destroy]
+    
   end
     get 'customers/:id/favorites', to: 'customers#favorites', as: 'customers_favorites'
     get "customers/:id/mypage", to: "customers#show"
@@ -48,8 +51,7 @@ root to: "public/homes#top"
     post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
-  resources :rooms, only: [:create,:show]
-  resources :messages, only: [:create]
+  
 
 
 

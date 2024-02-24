@@ -5,7 +5,7 @@ class Public::RoomsController < ApplicationController
     @room = Room.create(customer_id: current_customer.id)
     @entry1 = Entry.create(:room_id => @room.id, :customer_id => current_customer.id)
     @entry2 = Entry.create(params.require(:entry).permit(:customer_id, :room_id).merge(:room_id => @room.id))
-    redirect_to "/rooms/#{@room.id}"
+    redirect_to "/public/rooms/#{@room.id}"
   end
 
   def show

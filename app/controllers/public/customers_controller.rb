@@ -75,10 +75,9 @@ class Public::CustomersController < ApplicationController
   end
   
   def ensure_guest_customer
-    #@customer = Customer.find(params[:id])
-    #if @customer.email == "guest@example.com"
-      #redirect_to public_yakitori_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
-    #end
+    if current_customer.guest?
+      redirect_to root_path
+    end
   end  
 
 end
