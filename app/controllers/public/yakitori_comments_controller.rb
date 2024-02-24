@@ -7,7 +7,13 @@ class Public::YakitoriCommentsController < ApplicationController
     if  comment.save
       redirect_to public_yakitori_path(yakitori)
     else
-      redirect_to public_yakitori_path(yakitori)
+      @error_comment = comment
+      
+      
+      @yakitori = Yakitori.find(params[:yakitori_id])
+      @yakitori_comment = YakitoriComment.new
+      
+      render 'public/yakitoris/show'
     end
   end
 

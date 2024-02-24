@@ -4,6 +4,7 @@ class Admin::YakitoriCommentsController < ApplicationController
   def index
     @yakitori_comments = YakitoriComment.all
     @customers = Customer.all
+    @yakitoris = Yakitori.all
   end
   
   def destroy

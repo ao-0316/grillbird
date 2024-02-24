@@ -3,13 +3,15 @@
 <table class="table mt-3">
   <tr>
     <th class="col-2">名前</th>
-    <th class="col-8">コメント</th>
+    <th class="col-1">品名</th>
+    <th class="col-7">コメント</th>
     <th class="col-1"></th>
     <th class="col-1"></th>
   </tr>
 <% @yakitori_comments.each do |yakitori_comment| %>
   <tr>
     <td class="col-2"><%= @customers.find(yakitori_comment.customer_id).full_name %></td>
+    <td class="col-1"><%= @yakitoris.find(yakitori_comment.yakitori_id).name %></th>
     <td class="col-8"><%= yakitori_comment.comment %></td>
     <td class="col-1"><%= yakitori_comment.created_at.strftime('%Y/%m/%d') %></td>
     <td class="col-1">

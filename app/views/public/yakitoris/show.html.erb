@@ -1,50 +1,56 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      <% if @yakitori_comment.errors.any? %>
-        <%= @yakitori_comment.errors.count %>件のエラーが発生しました
-        　<ul><% @yakitori_comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <% if @yakitori.image.attached? %>
-                  <%= image_tag @yakitori.image, size: '250x200' %>
-                <% else %>
-                  <%= image_tag 'no_image', size: "250x200" %>
-                <% end %>
-        <h2><%= @yakitori.name %></h2>
-        <p><%= @yakitori.introduction %></p>
-        <p><%= @yakitori.genre.name %></p>
+      <% if @yakitori.image.attached? %>
+        <%= image_tag @yakitori.image, size: '250x200' %>
+      <% else %>
+        <%= image_tag 'no_image', size: "250x200" %>
+      <% end %>
+      <h2><%= @yakitori.name %></h2>
+      <p><%= @yakitori.introduction %></p>
+      <p><%= @yakitori.genre.name %></p>
       <div><%= form_with model: [@yakitori, @yakitori_comment], url: public_yakitori_yakitori_comments_path(@yakitori), local: true do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
-          <% end %>
+      <% if @error_comment.present? %>
+        <div id="error_explanation">
+        <h2><%= @error_comment.errors.count %>件のエラーが発生しました。</h2>
+        <ul>
+        <% @error_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+        </div>
+      <% end %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+      <% end %>
       </div>
       <div id="favorite_buttons_<%= @yakitori.id %>">
         <%= render "public/favorites/favorites", yakitori: @yakitori %>
       </div>
     </div>
+    
+     
       <div class="col-md-9">
         <h2>コメント件数：<%= @yakitori.yakitori_comments.count %></h2>
-        <div class="col d-flex">
-          <div class="row">
-
+        <div class="container">
+         <div class="row">
+           
           <% @yakitori.yakitori_comments.each do |yakitori_comment| %>
+             <table>
               <% if yakitori_comment.customer.profile_image.attached? %>
-                <p><%= image_tag yakitori_comment.customer.profile_image ,:size => "200x200"%></p>
+                <th><%= image_tag yakitori_comment.customer.profile_image ,:size => "200x200"%></th>
                 <% else %>
-                <%= image_tag 'no_image', size: "250x200" %>
+                <th><%= image_tag 'no_image', size: "200x200" %></th>
                 <% end %>
-                <p><%= link_to public_path(yakitori_comment.customer) do %>
+                <th><%= link_to public_path(yakitori_comment.customer) do %>
               <%= yakitori_comment.customer.full_name %>
-              <% end %></p>
-                <p><%= yakitori_comment.created_at.strftime('%Y/%m/%d') %><%= yakitori_comment.comment %></p>
+              <% end %></th>
+                <th><%= yakitori_comment.created_at.strftime('%Y/%m/%d') %><%= yakitori_comment.comment %></th>
               <% if yakitori_comment.customer == current_customer %>
-                <p><%= link_to "削除", public_yakitori_yakitori_comment_path(yakitori_comment.yakitori,yakitori_comment), method: :delete %></p>
+                <th><%= button_to "削除", public_yakitori_yakitori_comment_path(yakitori_comment.yakitori,yakitori_comment), method: :delete,data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %></th>
               <% end %>
             <% end %>
+            </table>
           </div>
         </div>
       </div>
