@@ -6,6 +6,7 @@ class Yakitori < ApplicationRecord
   has_one_attached :image
 
   #validates :comment, presence: true
+  #品目の投稿が出来なくなる
 
 
   def self.looks(search, word)
@@ -21,9 +22,6 @@ class Yakitori < ApplicationRecord
       @yakitori = Yakitori.all
     end
   end
-
-
-
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)

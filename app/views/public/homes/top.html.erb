@@ -14,23 +14,20 @@
         <% end %>
       </table>
     </div>
-    
     <div class="col-md-7">
       <h1>焼き鳥、サイドメニュー一覧(最新6件)</h1>
       <div class="container">
         <div class="row">
-          
-        
         <% @yakitoris.first(6).each do |yakitori| %>
         <table>
-        <% if yakitori.image.attached? %>
-          <th><%= image_tag yakitori.image, size: '200x180' %></th>
-        <% else %>
-          <th><%= image_tag 'no_image.jpg', size: "200x180" %></th>
-        <% end %>
-          <th><%= link_to yakitori.name, public_yakitori_path(yakitori) %></th>
-          <th><%= yakitori.genre.name %></th>
-        <% end %>
+          <% if yakitori.image.attached? %>
+            <th><%= image_tag yakitori.image, size: '200x180' %></th>
+          <% else %>
+            <th><%= image_tag 'no_image.jpg', size: "200x180" %></th>
+          <% end %>
+            <th><%= link_to yakitori.name, public_yakitori_path(yakitori) %></th>
+            <th><%= yakitori.genre.name %></th>
+          <% end %>
         </table>
           <p calss="text-align:center"><%= image_tag "yakitori1.png", :size => "800x500" %></p>
       </div>

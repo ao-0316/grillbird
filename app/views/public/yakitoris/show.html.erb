@@ -4,7 +4,7 @@
       <% if @yakitori.image.attached? %>
         <%= image_tag @yakitori.image, size: '250x200' %>
       <% else %>
-        <%= image_tag 'no_image.jp', size: "250x200" %>
+        <%= image_tag 'no_image.jpg', size: "250x200" %>
       <% end %>
       <h2><%= @yakitori.name %></h2>
       <p><%= @yakitori.introduction %></p>
