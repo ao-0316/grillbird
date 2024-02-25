@@ -8,7 +8,7 @@
              <% if yakitori.image.attached? %>
                 <%= image_tag yakitori.image, size: '250x200' %>
               <% else %>
-                <%= image_tag 'no_image', size: "250x200" %>
+                <%= image_tag 'no_image.jpg', size: "250x200" %>
               <% end %>
               <p><%= link_to yakitori.name, public_yakitori_path(yakitori) %></p>
               <p><%= yakitori.genre.name %></p>

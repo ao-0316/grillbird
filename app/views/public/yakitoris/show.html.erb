@@ -4,7 +4,7 @@
       <% if @yakitori.image.attached? %>
         <%= image_tag @yakitori.image, size: '250x200' %>
       <% else %>
-        <%= image_tag 'no_image', size: "250x200" %>
+        <%= image_tag 'no_image.jp', size: "250x200" %>
       <% end %>
       <h2><%= @yakitori.name %></h2>
       <p><%= @yakitori.introduction %></p>
@@ -40,7 +40,7 @@
               <% if yakitori_comment.customer.profile_image.attached? %>
                 <th><%= image_tag yakitori_comment.customer.profile_image ,:size => "200x200"%></th>
                 <% else %>
-                <th><%= image_tag 'no_image', size: "200x200" %></th>
+                <th><%= image_tag 'no_image.jpg', size: "200x200" %></th>
                 <% end %>
                 <th><%= link_to public_path(yakitori_comment.customer) do %>
               <%= yakitori_comment.customer.full_name %>
