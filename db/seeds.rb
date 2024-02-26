@@ -37,25 +37,28 @@ customer3 = Customer.find_or_create_by!(email: "saburou@example.com") do |custom
    customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpeg"), filename:"sample-user3.jpeg")
 end
 
+#品目を分ける為のジャンルのテストデータ3つ
+genre_a = Genre.find_or_create_by!(name: "塩")
+
+genre_b = Genre.find_or_create_by!(name: "タレ")
+
+genre_c = Genre.find_or_create_by!(name: "デザート")
+
 #品目のテストデータ3つ
 Yakitori.find_or_create_by!(name: "なんこつ") do |yakitori|
   yakitori.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-yakitori1.jpeg"), filename:"sample-yakitori1.jpeg")
   yakitori.introduction = "コリコリして美味しい"
+  yakitori.genre = genre_a
 end
 
 Yakitori.find_or_create_by!(name: "アイスクリーム") do |yakitori|
   yakitori.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-yakitori2.jpeg"), filename:"sample-yakitori2.jpeg")
   yakitori.introduction = "甘くて美味しい"
+  yakitori.genre = genre_c
 end
 
 Yakitori.find_or_create_by!(name: "つくね") do |yakitori|
   yakitori.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-yakitori3.jpeg"), filename:"sample-yakitori3.jpeg")
-  yakitori.introduction = "甘くて美味しい"
+  yakitori.introduction = "タレが美味い"
+  yakitori.genre = genre_b
 end
-
-#品目を分ける為のジャンルのテストデータ3つ
-Genre.find_or_create_by!(name: "塩")
-
-Genre.find_or_create_by!(name: "タレ")
-
-Genre.find_or_create_by!(name: "デザート")
