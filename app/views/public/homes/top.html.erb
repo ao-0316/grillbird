@@ -18,6 +18,7 @@
       <h1>焼き鳥、サイドメニュー一覧(最新6件)</h1>
       <div class="container">
         <div class="row">
+      <% if @yakitoris.present? %>
         <% @yakitoris.first(6).each do |yakitori| %>
         <table>
           <% if yakitori.image.attached? %>
@@ -29,6 +30,7 @@
             <th><%= yakitori.genre.name %></th>
           <% end %>
         </table>
+      <% end %>
           <p calss="text-align:center"><%= image_tag "yakitori1.png", :size => "800x500" %></p>
       </div>
     </div>
