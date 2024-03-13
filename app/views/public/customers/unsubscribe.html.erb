@@ -2,13 +2,11 @@
   <div class="row">
     <div class="col text-center" style="height: 500px;">
       <h1 class="">本当に退会しますか？</h1>
-
       <p>
         退会すると、会員登録情報や<br>
         これまでのコメントやいいねが閲覧できなくなります。<br>
         退会する場合は、「退会する」をクリックしてください。
       </p>
-
       <div class="my-5">
         <%= form_with model: @customer, url: public_customers_withdraw_path, method: :patch,  local: true do |f| %>
           <%= link_to "退会しない", public_path(current_customer), class:"mr-5 btn btn-primary" %>
@@ -16,7 +14,6 @@
           <%#= link_to "退会する", public_top_path, class:"ml-5 btn btn-danger" %>
         <% end %>
       </div>
-
     </div>
   </div>
 </div>
