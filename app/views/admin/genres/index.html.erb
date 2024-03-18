@@ -2,7 +2,6 @@
   <div class="row my-3 offset-1 text-center">
     <h2>ジャンル一覧・追加</h2>
   </div>
-
   <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
   <form class="form-horizontal">
     <div class="form-group row my-3">
@@ -14,7 +13,6 @@
     </div>
   </form>
   <% end %>
-
   <div class="row">
     <div class="col-4">
       <table class="table table-bordered">
@@ -35,5 +33,4 @@
       </table>
     </div>
   </div>
-
 </div>
